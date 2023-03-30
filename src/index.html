@@ -12,6 +12,9 @@
 
 		<!-- link css  -->
 		<link rel="stylesheet" href="./index.css" />
+
+		<!-- link js file  -->
+		<script src="./index.js" defer type="module"></script>
 	</head>
 	<body class="bg-gray-100 text-gray-700">
 		<header class="bg-gray-200">
@@ -55,10 +58,11 @@
 			</nav>
 		</header>
 
-		<main>
+		<main class="w-11/12 mx-auto">
 			<section class="burger-section container mx-auto py-10">
-				<div class="burger-card-wrapper">
-					<div
+				<div
+					class="burger-card-wrapper grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 xl:grid-cols-4 gap-x-5">
+					<!-- <div
 						class="burger-card rounded-lg shadow-md overflow-hidden w-96 h-96 bg-white">
 						<div
 							class="burger-img h-48 overflow-hidden flex justify-center items-center flex-col">
@@ -75,12 +79,8 @@
 								Order now
 							</button>
 						</div>
-					</div>
+					</div> -->
 				</div>
-
-				<!-- <div class="burger-card-wrapper"> -->
-
-				<!-- </div> -->
 			</section>
 		</main>
 	</body>
