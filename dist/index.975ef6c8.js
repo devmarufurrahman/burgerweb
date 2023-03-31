@@ -566,11 +566,17 @@ class App {
     _getBurgers() {
         (0, _dataJs.burgers).forEach((burger)=>this._renderBurger(burger));
     }
+    _currencyConvert(amount) {
+        return amount.toLocaleString("bn-BD", {
+            style: "currency",
+            currency: "BDT"
+        });
+    }
     _renderBurger(burger) {
         const html = `<div
-						class="burger-card rounded-lg shadow-md overflow-hidden w-96 h-96 bg-white">
+						class="burger-card rounded-lg shadow-md overflow-hidden  h-96 bg-white">
 						<div
-							class="burger-img h-48 overflow-hidden flex justify-center items-center flex-col">
+							class="burger-img  h-44 overflow-hidden flex justify-center items-center flex-col">
 							<img
 								src=${burger.img}
 								alt=${burger.title}
@@ -578,14 +584,19 @@ class App {
 						</div>
 						<div class="burger-texts p-5 flex flex-col items-start gap-5">
 							<h2 class="text-2xl font-semibold">${burger.title}</h2>
-							<p class="text-xl font-semibold text-orange-500">BDT. ${burger.price}</p>
-							<button
-								class="bg-orange-600 text-white py-2 px-4 rounded-md uppercase font-semibold mt-2 hover:bg-gray-700 duration-300">
+							<p class="text-xl font-semibold text-orange-500">${this._currencyConvert(burger.price)}</p>
+							<button ${onclick = this._orderHandler.bind(this)}
+								class="order-btn bg-orange-600 text-white py-2 px-4 rounded-md uppercase font-semibold mt-2 hover:bg-gray-700 duration-300">
 								Order now
 							</button>
 						</div>
 					</div>`;
         burgerWrapper.insertAdjacentHTML("afterbegin", html);
+    }
+    _orderHandler(e) {
+        const nodes = e.target.parentNode;
+        const title = nodes.children[0].innerText;
+        const price = nodes.children[1].innerText;
     }
 }
 const newApp = new App();
